@@ -8,17 +8,17 @@ For running this u need swagger ui and can be dowloaded from above link
 
 Installation prodecure for swagger 
 
-'''
+```
   npm install -g http-server
-'''
+```
 
 for installation and starting the service of swagger navigate to directory where swagger is unpacked 
 
-'''
+```
   npm install
-'''
+```
 then in same directory 
 
-'''
+```
   npm start
-'''
+```
