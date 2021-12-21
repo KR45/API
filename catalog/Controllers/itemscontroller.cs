@@ -12,11 +12,11 @@ namespace catalog.Controllers
     [Route("[[items]]")]
     public class itemscontroller : ControllerBase
     {
-        private readonly inmemitemsrep repositories;
+        private readonly itemrepos repositories; //items interface 
 
-        public itemscontroller()
+        public itemscontroller(itemrepos repositories)
         {
-            repositories = new inmemitemsrep();
+            this.repositories = repositories;//pointing towards the already made class and interface
         }
 
 
