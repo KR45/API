@@ -5,7 +5,7 @@ using catalog.entities;
 
 namespace catalog.repositories
 {
-    public class inmemitemsrep
+    public class inmemitemsrep : itemrepos //making interface instead of making everytime new object
     {
         private readonly List<Item> items = new()
         {
