@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using catalog.entities;
 using catalog.repositories;
+using catalog.Dto;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace catalog.Controllers
 {
@@ -22,14 +24,15 @@ namespace catalog.Controllers
 
         [HttpGet]
 
-        public IEnumerable<Item> GetItems()
+        public IEnumerable<itemDto> GetItems()
         {
-            var items = repositories.GetItems();
-            return items;
+            var items = repositories.GetItems().Select(item => item.AsDto()); // select command is simple projection of file DTO using link
+            return items;  
+
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Item> GetItem(Guid id)
+        public ActionResult<itemDto> GetItem(Guid id)
         {
             var item= repositories.GetItem(id);
 
@@ -38,7 +41,7 @@ namespace catalog.Controllers
                 return NotFound();
             }
 
-            return item;
+            return item.AsDto();// if present then it will return the item
         }
     }
 }
