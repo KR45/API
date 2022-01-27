@@ -11,7 +11,7 @@ namespace catalog.Controllers
      //GET/Items
 
     [ApiController]
-    [Route("[[items]]")]
+    [Route("items")]
     public class itemscontroller : ControllerBase
     {
         private readonly itemrepos repositories; //items interface 

@@ -12,6 +12,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using catalog.repositories;
+using catalog.Settings;
+using MongoDB.Driver;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson.Serialization;
 
 namespace catalog
 {
@@ -27,7 +31,20 @@ namespace catalog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<itemrepos, inmemitemsrep>(); // adding service for retriving the object 
+            BsonSerializer.RegisterSerializer(new GuidSerializer(MongoDB.Bson.BsonType.String));
+            BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(MongoDB.Bson.BsonType.String));//create new value of id and date create  in mongodb in human readable format
+            services.AddSingleton<IMongoClient>(ServiceProvider => 
+            {
+
+                var settings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
+                return new MongoClient (settings.ConnectionString);
+
+
+
+            });//adding service for the mongodb connection
+
+
+            services.AddSingleton<itemrepos, MongoDBitemrep>(); // adding service for retriving the object 
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

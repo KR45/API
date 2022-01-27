@@ -13,10 +13,7 @@
             "args": [],
             "cwd": "${workspaceFolder}/catalog",
             "stopAtEntry": false,
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-            },
+           // delete server ready action 
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },

@@ -45,3 +45,9 @@ Then press f5 to run the program
 
 ![Screenshot 2021-12-18 175054](https://user-images.githubusercontent.com/36817376/146640988-fc2cfba8-1cf2-4a7e-b84c-f05c7e8c250f.png)
 
+
+Need to add mongo db driver package to connect MongoDB
+
+```
+  dotnet add package MongoDB.Driver
+```
