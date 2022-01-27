@@ -14,5 +14,12 @@ namespace catalog.repositories
     {
         Item GetItem(Guid id);
         IEnumerable<Item> GetItems();
+
+        void CreateItem(Item item); // create items in repo
+
+        void UpdateItem(Item item); //fot updating the items already present in the field
+
+
+        void DeleteItem(Guid id);// for deleting the item
     }
 }
